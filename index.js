@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const ejsEngine = require('ejs-mate'),
 const app = express();
 const port = 3000;
 const path = require("path");
@@ -7,6 +8,7 @@ const campGround = require("./models/campGround.js");
 const methodOverride = require("method-override");
 mongoose.connect("mongodb://127.0.0.1:27017/campGroundDB");
 
+app.engine('ejs', ejsEngine);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
